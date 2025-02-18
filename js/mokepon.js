@@ -4,6 +4,7 @@ let vidasJugador = 3
 let vidasEnemigo = 3
 
 function iniciarJuego() {
+    
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
     sectionSeleccionarAtaque.style.display = 'none'
 
