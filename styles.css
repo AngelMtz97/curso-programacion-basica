@@ -13,7 +13,7 @@
 }
 
 .subtitulo {
- color: white;
+ color: skyblue;
 }
 
 #seleccionar-mascota {
@@ -53,7 +53,24 @@ input {
   height: 40px;
   width: 500px;
   border: 2px solid black;
-  margin: 20px;
+  margin-top: 40px;
   padding: 10px;
   border-radius: 30px;
+}
+
+#seleccionar-ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.btn-attack {
+  background-color: lightslategrey;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  border: 2px solid slateblue;
+  box-sizing: border-box;
 }
