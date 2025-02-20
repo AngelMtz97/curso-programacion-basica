@@ -74,3 +74,19 @@ input {
   border: 2px solid slateblue;
   box-sizing: border-box;
 }
+
+#mensajes {
+  width: 280px;
+  background: pink;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#boton-reiniciar {
+  border: none;
+  color: #11468F;
+}
