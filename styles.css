@@ -90,3 +90,38 @@ input {
   border: none;
   color: #11468F;
 }
+
+.ataques {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  text-align: center;
+  gap: 100px;
+}
+
+#vidas-jugador, #vidas-enemigo {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+.acciones-ataque {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.ataques-enemigo, .ataques-jugador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 360px) {
+    .card-container  {
+      flex-direction: column;
+    }
+
+    .acciones-ataque {
+      flex-direction: column;
+    }
+}
+
