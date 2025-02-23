@@ -48,6 +48,11 @@ input {
   display: none;
 }
 
+input:checked + label{
+ background-color: #11468F;
+
+}
+
 #boton-mascota {
   background-color: orange;
   height: 40px;
