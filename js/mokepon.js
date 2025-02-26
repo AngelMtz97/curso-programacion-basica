@@ -8,9 +8,7 @@ const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
+
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
@@ -23,8 +21,12 @@ let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
+let inputHipodoge;
+let inputCapipepo;
+let inputRatigueya;
 
 let mokepones = []
+let opcionMokepones;
 
 class Mokepon {
 
@@ -99,7 +101,6 @@ ratigueya.ataques.push(
         nombre: '🔥',
         id: 'boton-fuego'
     },
-    ,
     {
         nombre: '🔥',
         id: 'boton-fuego'
@@ -118,6 +119,29 @@ ratigueya.ataques.push(
 mokepones.push(hipodoge, capipepo, ratigueya);
 
 function iniciarJuego() {
+
+
+    const cardContainer = document.getElementById('contenedor-tarjetas');
+
+    mokepones.forEach((mokepon) => {
+        opcionMokepones = `
+          <div>
+             <input type="radio" name="mascota" id="${mokepon.nombre.toLowerCase()}" />
+             <label class="tarjeta-de-mokepon" for="${mokepon.nombre.toLowerCase()}">
+             <p>${mokepon.nombre}</p>
+            <img
+              src="${mokepon.foto}"
+              alt="${mokepon.nombre}"
+            />
+          </label>
+          </div>
+        `;
+        cardContainer.innerHTML += opcionMokepones;
+    })
+
+    inputHipodoge = document.getElementById('hipodoge')
+    inputCapipepo = document.getElementById('capipepo')
+    inputRatigueya = document.getElementById('ratigueya')
     
     sectionSeleccionarAtaque.style.display = 'none'
 
@@ -132,6 +156,7 @@ function iniciarJuego() {
     botonTierra.addEventListener('click', ataqueTierra)
     
     botonReiniciar.addEventListener('click', reiniciarJuego)
+
 
 }
 
