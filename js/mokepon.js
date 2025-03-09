@@ -26,8 +26,15 @@ let inputHipodoge;
 let inputCapipepo;
 let inputRatigueya;
 let mascotaJugador;
+let personajeJugador
 let ataquesJugador = [];
 let ataquesMokeponEnemigo = []
+
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa');
+
+let lienzo = mapa.getContext("2d");
+
 
 let mokepones = []
 let botones;
@@ -41,6 +48,14 @@ class Mokepon {
         this.foto = foto;
         this.vida = vida;
         this.ataques = [];
+        this.x = 20;
+        this.y = 30;
+        this.ancho = 80;
+        this.alto = 80;
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto;
+        this.velocidadX = 0;
+        this.velocidadY = 0;
     }
 
 }
@@ -126,6 +141,9 @@ mokepones.push(hipodoge, capipepo, ratigueya);
 
 function iniciarJuego() {
 
+    sectionSeleccionarAtaque.style.display = 'none'
+    sectionReiniciar.style.display = 'none'    
+    sectionVerMapa.style.display = 'none'
 
     const cardContainer = document.getElementById('contenedor-tarjetas');
     let opcionMokepones;
@@ -150,9 +168,7 @@ function iniciarJuego() {
     inputCapipepo = document.getElementById('capipepo')
     inputRatigueya = document.getElementById('ratigueya')
     
-    sectionSeleccionarAtaque.style.display = 'none'
-
-    sectionReiniciar.style.display = 'none'    
+   
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     
@@ -163,36 +179,54 @@ function iniciarJuego() {
 
 function seleccionarMascotaJugador() {
     
-    sectionSeleccionarMascota.style.display = 'none'
-    
-    sectionSeleccionarAtaque.style.display = 'flex'
-
-    spanMascotaJugador.innerHTML = 'Jugador: ';
+    let seleccionaMascota = false;
 
     if (inputHipodoge.checked) {
 
+        seleccionaMascota = true;
         spanMascotaJugador.innerHTML += inputHipodoge.id
         mascotaJugador = inputHipodoge.id;
 
     } else if (inputCapipepo.checked) {
 
+        seleccionaMascota = true;
         spanMascotaJugador.innerHTML += inputCapipepo.id
         mascotaJugador = inputCapipepo.id;
 
     } else if (inputRatigueya.checked) {
 
+        seleccionaMascota = true;
         spanMascotaJugador.innerHTML += inputRatigueya.id
         mascotaJugador = inputRatigueya.id;
 
-    } else {
+    }
+
+    if(seleccionaMascota === true) {
+
+        personajeJugador = mokepones.find((item) => {
+            return item.nombre.toLowerCase() === mascotaJugador;
+        });
+
+        sectionSeleccionarMascota.style.display = 'none'
+    
+        sectionVerMapa.style.display = 'flex';
+    
+        pintarPersonaje();
+        // lienzo.fillRect(5, 15, 20, 40);
+        // sectionSeleccionarAtaque.style.display = 'flex'
+    
+        spanMascotaJugador.innerHTML = 'Jugador: ';
+        spanVidasEnemigo.innerHTML = victoriasEnemigo;
+        spanVidasJugador.innerHTML = victoriasJugador;
+    
+        extraerAtaques(mascotaJugador)
+        seleccionarMascotaEnemigo()
+    }
+    else {
         alert('Selecciona una mascota')
     }
 
-    spanVidasEnemigo.innerHTML = victoriasEnemigo;
-    spanVidasJugador.innerHTML = victoriasJugador;
-
-    extraerAtaques(mascotaJugador)
-    seleccionarMascotaEnemigo()
+ 
 }
 
 function extraerAtaques(nombreMascota) {
@@ -382,6 +416,49 @@ function reiniciarJuego() {
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function pintarPersonaje() {
+
+     lienzo.clearRect(0, 0, mapa.width, mapa.height);
+     lienzo.drawImage(
+        personajeJugador.mapaFoto, 
+        personajeJugador.x, personajeJugador.y, 
+        personajeJugador.ancho, personajeJugador.alto);
+}
+
+function moverArriba() {
+ 
+    personajeJugador.y -= 5;
+
+    pintarPersonaje();
+
+}
+
+
+function moverAbajo() {
+
+    personajeJugador.y += 5;
+
+    pintarPersonaje();
+
+}
+
+function moverDerecha() {
+
+    
+    personajeJugador.x += 5;
+
+    pintarPersonaje();
+
+}
+
+function moverIzquierda() {
+
+    personajeJugador.x -= 5;
+
+    pintarPersonaje();
+
 }
 
 window.addEventListener('load', iniciarJuego)
