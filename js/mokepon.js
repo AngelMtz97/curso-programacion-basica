@@ -246,6 +246,8 @@ function secuenciaAtaque() {
                 item.style.background = '#112f58';
             }
 
+            item.disabled = true;
+
             ataqueAleatorioEnemigo()
         })
     })
@@ -366,9 +368,9 @@ function crearMensajeFinal(resultadoFinal) {
     
     sectionMensajes.innerHTML = resultadoFinal
 
-    botones.forEach((item) => {
+    /* botones.forEach((item) => {
         item.disabled = true;
-    })
+    }) */
 
     
     sectionReiniciar.style.display = 'block'
