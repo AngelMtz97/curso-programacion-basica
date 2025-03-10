@@ -169,8 +169,6 @@ function iniciarJuego() {
     inputCapipepo = document.getElementById('capipepo')
     inputRatigueya = document.getElementById('ratigueya')
     
-   
-    
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     
     botonReiniciar.addEventListener('click', reiniciarJuego)
@@ -211,7 +209,8 @@ function seleccionarMascotaJugador() {
         sectionSeleccionarMascota.style.display = 'none'
     
         sectionVerMapa.style.display = 'flex';
-        intervalo = setInterval(pintarPersonaje, 50);
+
+        iniciarMapa();
     
         // lienzo.fillRect(5, 15, 20, 40);
         // sectionSeleccionarAtaque.style.display = 'flex'
@@ -228,6 +227,35 @@ function seleccionarMascotaJugador() {
     }
 
  
+}
+
+function iniciarMapa() {
+
+    intervalo = setInterval(pintarPersonaje, 50);
+
+    window.addEventListener('keydown', manejarTeclaPresionada)
+    window.addEventListener('keyup', detenerMovimiento)
+    
+}
+
+function manejarTeclaPresionada(event) {
+    
+    switch(event.key) {
+        case 'ArrowUp' :
+                moverArriba();
+          break;
+        case 'ArrowDown' :
+                moverAbajo();
+          break;
+        case 'ArrowLeft' :
+                moverIzquierda();
+          break;
+        case 'ArrowRight' :
+                moverDerecha();
+          break;
+
+    }
+
 }
 
 function extraerAtaques(nombreMascota) {
