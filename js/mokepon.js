@@ -29,6 +29,7 @@ let mascotaJugador;
 let personajeJugador
 let ataquesJugador = [];
 let ataquesMokeponEnemigo = []
+let intervalo;
 
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa');
@@ -210,8 +211,8 @@ function seleccionarMascotaJugador() {
         sectionSeleccionarMascota.style.display = 'none'
     
         sectionVerMapa.style.display = 'flex';
+        intervalo = setInterval(pintarPersonaje, 50);
     
-        pintarPersonaje();
         // lienzo.fillRect(5, 15, 20, 40);
         // sectionSeleccionarAtaque.style.display = 'flex'
     
@@ -420,6 +421,10 @@ function aleatorio(min, max) {
 
 function pintarPersonaje() {
 
+    personajeJugador.x += personajeJugador.velocidadX;
+    personajeJugador.y += personajeJugador.velocidadY;
+
+
      lienzo.clearRect(0, 0, mapa.width, mapa.height);
      lienzo.drawImage(
         personajeJugador.mapaFoto, 
@@ -429,36 +434,43 @@ function pintarPersonaje() {
 
 function moverArriba() {
  
-    personajeJugador.y -= 5;
+    personajeJugador.velocidadY = -5;
+    // personajeJugador.y -= 5;
 
-    pintarPersonaje();
+    // pintarPersonaje();
 
 }
 
 
 function moverAbajo() {
+    personajeJugador.velocidadY = 5;
+    // personajeJugador.y += 5;
 
-    personajeJugador.y += 5;
-
-    pintarPersonaje();
+   // pintarPersonaje();
 
 }
 
 function moverDerecha() {
 
-    
-    personajeJugador.x += 5;
+    personajeJugador.velocidadX = 5;    
+    // personajeJugador.x += 5;
 
-    pintarPersonaje();
+    // pintarPersonaje();
 
 }
 
 function moverIzquierda() {
 
-    personajeJugador.x -= 5;
+    personajeJugador.velocidadX = -5;
+   // personajeJugador.x -= 5;
 
-    pintarPersonaje();
+   // pintarPersonaje();
 
+}
+
+function detenerMovimiento() {
+    personajeJugador.velocidadX = 0;
+    personajeJugador.velocidadY = 0;
 }
 
 window.addEventListener('load', iniciarJuego)
