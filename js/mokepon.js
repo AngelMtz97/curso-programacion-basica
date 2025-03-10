@@ -30,6 +30,8 @@ let personajeJugador
 let ataquesJugador = [];
 let ataquesMokeponEnemigo = []
 let intervalo;
+let mapaBackground = new Image();
+mapaBackground.src = './assets/mokemap.png'
 
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa');
@@ -231,7 +233,10 @@ function seleccionarMascotaJugador() {
 
 function iniciarMapa() {
 
-    intervalo = setInterval(pintarPersonaje, 50);
+    mapa.width = 400;
+    mapa.height = 300;
+
+    intervalo = setInterval(pintarCanvas, 50);
 
     window.addEventListener('keydown', manejarTeclaPresionada)
     window.addEventListener('keyup', detenerMovimiento)
@@ -447,14 +452,22 @@ function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-function pintarPersonaje() {
+function pintarCanvas() {
 
     personajeJugador.x += personajeJugador.velocidadX;
     personajeJugador.y += personajeJugador.velocidadY;
+    
+    lienzo.clearRect(0, 0, mapa.width, mapa.height);
 
+    lienzo.drawImage(
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
 
-     lienzo.clearRect(0, 0, mapa.width, mapa.height);
-     lienzo.drawImage(
+    lienzo.drawImage(
         personajeJugador.mapaFoto, 
         personajeJugador.x, personajeJugador.y, 
         personajeJugador.ancho, personajeJugador.alto);
@@ -465,7 +478,7 @@ function moverArriba() {
     personajeJugador.velocidadY = -5;
     // personajeJugador.y -= 5;
 
-    // pintarPersonaje();
+    // pintarCanvas();
 
 }
 
@@ -474,7 +487,7 @@ function moverAbajo() {
     personajeJugador.velocidadY = 5;
     // personajeJugador.y += 5;
 
-   // pintarPersonaje();
+   // pintarCanvas();
 
 }
 
@@ -483,7 +496,7 @@ function moverDerecha() {
     personajeJugador.velocidadX = 5;    
     // personajeJugador.x += 5;
 
-    // pintarPersonaje();
+    // pintarCanvas();
 
 }
 
@@ -492,7 +505,7 @@ function moverIzquierda() {
     personajeJugador.velocidadX = -5;
    // personajeJugador.x -= 5;
 
-   // pintarPersonaje();
+   // pintarCanvas();
 
 }
 
