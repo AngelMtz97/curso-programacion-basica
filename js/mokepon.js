@@ -46,17 +46,17 @@ let indexAtaqueEnemigo
 
 class Mokepon {
 
-    constructor(nombre, foto, vida) {
+    constructor(nombre, foto, vida, fotoMapa, x = 20, y = 30) {
         this.nombre = nombre;
         this.foto = foto;
         this.vida = vida;
         this.ataques = [];
-        this.x = 20;
-        this.y = 30;
+        this.x = x;
+        this.y = y;
         this.ancho = 80;
         this.alto = 80;
         this.mapaFoto = new Image()
-        this.mapaFoto.src = foto;
+        this.mapaFoto.src = fotoMapa;
         this.velocidadX = 0;
         this.velocidadY = 0;
     }
@@ -233,8 +233,8 @@ function seleccionarMascotaJugador() {
 
 function iniciarMapa() {
 
-    mapa.width = 400;
-    mapa.height = 300;
+    mapa.width = 800;
+    mapa.height = 600;
 
     intervalo = setInterval(pintarCanvas, 50);
 
