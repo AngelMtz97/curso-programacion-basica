@@ -126,9 +126,9 @@ input:checked + label{
   justify-content: center;
 }
 
-#mapa {
+/* #mapa {
   border: 2px solid blueviolet;
-}
+} */
 
 @media (max-width: 860px) {
     .card-container  {
