@@ -272,22 +272,46 @@ function iniciarMapa() {
 function manejarTeclaPresionada(event) {
 
     // Valida que las coordenadas del mokepon no se salga del mapa
-    
-    switch(event.key) {
-        case 'ArrowUp' :
-                moverArriba();
-          break;
-        case 'ArrowDown' :
-                moverAbajo();
-          break;
-        case 'ArrowLeft' :
-                moverIzquierda();
-          break;
-        case 'ArrowRight' :
-                moverDerecha();
-          break;
 
-    }
+        switch(event.key) {
+            case 'ArrowUp' :
+
+                   if( (personajeJugador.y - personajeJugador.alto + 10) > 0) {
+                    moverArriba();
+                   } else {
+                      detenerMovimiento();
+                   }
+                
+              break;
+            case 'ArrowDown' :
+
+                  if( (personajeJugador.y + personajeJugador.alto + 10) < mapa.height ) {
+                      moverAbajo();
+                  } else {
+                    detenerMovimiento();
+                  }
+
+              break;
+            case 'ArrowLeft' :
+                if((personajeJugador.x - personajeJugador.ancho + 10) > 0) {
+                    moverIzquierda();
+                } else {
+                    detenerMovimiento();
+                }
+                   
+              break;
+            case 'ArrowRight' :
+                   if((personajeJugador.x + personajeJugador.ancho + 10) < mapa.width) {
+                       moverDerecha();
+                   } else {
+                    detenerMovimiento();
+                   }
+              break;
+    
+        }
+
+    
+    
 
 }
 
