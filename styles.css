@@ -126,11 +126,23 @@ input:checked + label{
   justify-content: center;
 }
 
+#ver-mapa button {
+  background-color: lightslategrey;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  border: 2px solid slateblue;
+  box-sizing: border-box;
+  margin: 10px 0px;
+}
+
 /* #mapa {
   border: 2px solid blueviolet;
 } */
 
-@media (max-width: 860px) {
+@media (max-width: 1300px) {
     .card-container  {
       flex-direction: column;
     }
@@ -140,3 +152,10 @@ input:checked + label{
     }
 }
 
+@media (max-width: 730px) {
+  #ver-mapa div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}

@@ -270,6 +270,8 @@ function iniciarMapa() {
 }
 
 function manejarTeclaPresionada(event) {
+
+    // Valida que las coordenadas del mokepon no se salga del mapa
     
     switch(event.key) {
         case 'ArrowUp' :

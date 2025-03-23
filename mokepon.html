@@ -18,19 +18,21 @@
     </section>
 
     <section id="ver-mapa">
-      <h1 class="titulo">Recorre el mapa con tu mokepon</h1>
+      <h2 class="subtitulo">Recorre el mapa con tu mokepon</h2>
       <canvas id="mapa"> </canvas>
       <button onmousedown="moverArriba()" onmouseup="detenerMovimiento()">
         Arriba
       </button>
+      <div>
+        <button onmousedown="moverIzquierda()" onmouseup="detenerMovimiento()">
+          izquierda
+        </button>
+        <button onmousedown="moverDerecha()" onmouseup="detenerMovimiento()">
+          Derecha
+        </button>
+      </div>
       <button onmousedown="moverAbajo()" onmouseup="detenerMovimiento()">
         Abajo
-      </button>
-      <button onmousedown="moverIzquierda()" onmouseup="detenerMovimiento()">
-        izquierda
-      </button>
-      <button onmousedown="moverDerecha()" onmouseup="detenerMovimiento()">
-        Derecha
       </button>
     </section>
 
